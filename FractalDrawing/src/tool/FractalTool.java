@@ -43,7 +43,7 @@ public class FractalTool {
 	}
 	public void handleInput() {
 		while(true) {
-			System.out.println("press enter for new angle or q to quit");
+			System.out.println("press enter for new angle, b to start a new branch or q to quit");
 			String antwoord = myInput.nextLine();
 			if(antwoord.equals("")) {
 				setAngle();
