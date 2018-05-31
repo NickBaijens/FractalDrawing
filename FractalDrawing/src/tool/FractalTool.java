@@ -8,13 +8,16 @@ public class FractalTool {
 	static Scanner myInput = new Scanner(System.in);
 	private Integer angle;
 	private Integer newAngle;
+	private Integer branch;
 	
 	public FractalTool() {
+		angle = 0;
+		newAngle = 0;
+		branch = 1;
 		System.out.println("Draw a line");
 		System.out.println("For each new angle shown, draw a new line from your previous line at the angle shown");
 		System.out.println("If you hit the edge of the paper or another line, draw branches with the same rules.");
 		System.out.println("Repeat till your page is filled");
-		inputHandler();
 	}
 	
 	public Integer getAngle() {
@@ -24,23 +27,38 @@ public class FractalTool {
 	
 	public void setAngle() {
 		
-		while (newAngle==angle) {
+		newAngle = ThreadLocalRandom.current().nextInt(-25, 25);
+		while (newAngle==0) {
 			newAngle = ThreadLocalRandom.current().nextInt(-25, 25);
 		}
 		angle = newAngle;
 	}
 	
-	public void inputHandler() {
+	public void upBranch() {
+		branch = branch+1;
+	}
+	
+	public Integer getBranch() {
+		return branch;
+	}
+	public void handleInput() {
 		while(true) {
 			System.out.println("press enter for new angle or q to quit");
 			String antwoord = myInput.nextLine();
 			if(antwoord.equals("")) {
 				setAngle();
 				angle = getAngle();
-				System.out.println(angle);
+				System.out.println("branch: "+branch);
+				System.out.println("angle: "+angle);
+			}
+			else if(antwoord.equals("b")) {
+				upBranch();
+				setAngle();
+				System.out.println("branch: "+branch);
+				System.out.println("angle: "+angle);
 			}
 			else if(antwoord.equals("q")) {
-				System.exit(0);
+				break;
 			}
 			else {
 				System.out.println("unknown command");
