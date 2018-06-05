@@ -66,6 +66,7 @@ public class FractalTool {
 			}
 			
 			else if(antwoord.equals("q")) {
+				System.out.println("quit program");
 				break;
 			}
 			
