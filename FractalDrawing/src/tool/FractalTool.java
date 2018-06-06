@@ -30,9 +30,9 @@ public class FractalTool {
 	
 	public void setAngle() {
 		
-		newAngle = ThreadLocalRandom.current().nextInt(-25, 25);
+		newAngle = ThreadLocalRandom.current().nextInt(-2, 2);
 		while (newAngle==0) {
-			newAngle = ThreadLocalRandom.current().nextInt(-25, 25);
+			newAngle = ThreadLocalRandom.current().nextInt(-2, 2);
 		}
 		subBranch = subBranch+1;
 		angle = newAngle;
@@ -43,9 +43,10 @@ public class FractalTool {
 		subBranch = 0;
 	}
 	
-	public Integer getBranch() {
+	public Integer getSubBranch() {
 		return subBranch;
 	}
+	
 	public void handleInput() {
 		while(true) {
 			
