@@ -25,6 +25,7 @@ public class ToolMain {
 			}
 		}		
 	}
+	
 	public static void drawLines() {				
 		
 		Line a;
