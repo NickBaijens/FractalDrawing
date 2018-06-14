@@ -1,17 +1,44 @@
 package tool;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class ToolMain {
 		
 	//static FractalTool tool = new FractalTool();
-	static Line startLine = new Line();
+	private static List<Line> lines = new ArrayList<Line>();
+	private static List<Line> newLines = new ArrayList<Line>();
+	static Scanner myInput = new Scanner(System.in);
 	
 	public static void main(String[] args) {
 		//tool.handleInput();
-		Line a = startLine.newSubLine(startLine,1);
-		Line c = a.newSubLine(a, 1);
-		Line b = startLine.newSubLine(startLine,2);
-		Line d = b.newSubLine(b, 2);
-		System.out.println(startLine);
-	}	
+		Line startLine = new Line();//line 1
+		lines.add(startLine);
+		System.out.println(lines);
+		while(true) {
+			
+			String antwoord = myInput.nextLine();
+			if(antwoord.equals("")) {
+				drawLines();
+				System.out.println(lines);
+			}
+		}		
+	}
+	public static void drawLines() {				
+		
+		Line a;
+		Line b;		
+		
+		for(Line line : lines) {
+			
+			a = line.newSubLine(line,1);//line x.1
+			newLines.add(a);
+			
+			b = line.newSubLine(line,2);//line x.2			
+			newLines.add(b);
+		}
+		lines = newLines;
+		newLines = new ArrayList<Line>();
+	}
 }

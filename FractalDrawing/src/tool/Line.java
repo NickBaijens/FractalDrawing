@@ -14,9 +14,10 @@ public class Line {
 		angle = ThreadLocalRandom.current().nextInt(-15, 15);
 		name = "1";
 	}
+	//subLine constructor
 	public Line(Line parent, int branch) {
 		myParent = parent;
-		angle = ThreadLocalRandom.current().nextInt(-15, 15);
+		angle = ThreadLocalRandom.current().nextInt(-60, 60);
 		name = myParent.name+"."+branch;
 	}
 	//new sub Line
@@ -25,10 +26,23 @@ public class Line {
 		b = branch==2? new Line(parent,branch) : b;
 		if(branch == 1) {
 			return a;
-		}else return b;
+		}
+		if(branch == 2) {
+			return b;
+		}
+		else throw new IllegalArgumentException("branch number must be 1 or 2");
 		
 	}
 	public String toString() {
-		return "name: "+name+", subLine a: "+a+", subLine b: "+b;
+		String data = "ID: "+name+" Angle: "+angle;
+		data += "\n";
+		if(a!=null) {
+			data += a;
+		}
+		if(b!=null) {
+			data += b;
+		}
+			
+		return data;
 	}
 }
