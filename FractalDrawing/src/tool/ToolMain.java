@@ -22,6 +22,10 @@ public class ToolMain {
 			if(antwoord.equals("")) {
 				drawLines();
 				System.out.println(lines);
+				System.out.println(lines.size());
+			}
+			if(lines.size()>1000000) {
+				break;
 			}
 		}		
 	}
